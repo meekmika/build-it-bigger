@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         new EndpointsAsyncTask().execute(this);
     }
 
-    class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
-        private MyApi myApiService = null;
+    static class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+        private static MyApi myApiService = null;
         private Context context;
 
         @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Intent intent = new Intent(context, JokeActivity.class);
             intent.putExtra("joke", result);
-            startActivity(intent);
+            context.startActivity(intent);
         }
     }
 }
